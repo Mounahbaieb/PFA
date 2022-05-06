@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FormLayoutComponent } from './components/formlayout/formlayout.component';
+//import { FormLayoutComponent } from './components/formlayout/formlayout.component';
 import { PanelsComponent } from './components/panels/panels.component';
 import { OverlaysComponent } from './components/overlays/overlays.component';
 import { MediaComponent } from './components/media/media.component';
@@ -36,10 +36,11 @@ import { FournisseurListComponent } from './components/fournisseurs/fournisseur-
         RouterModule.forRoot([
             {
                 path: '', component: AppMainComponent,
-                canActivate: [LoginGuard],
+                //canActivate: [LoginGuard],
+                canDeactivate: [LoginGuard],
                 children: [
                     {path: '', component: DashboardComponent},
-                    {path: 'uikit/formlayout', component: FormLayoutComponent},
+                    // {path: 'uikit/formlayout', component: FormLayoutComponent},
                     {path: 'uikit/input', component: InputComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelComponent},
                     {path: 'uikit/invalidstate', component: InvalidStateComponent},
