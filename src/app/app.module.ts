@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -99,7 +99,6 @@ import { AppMenuComponent } from './app.menu.component';
 import { AppMenuitemComponent } from './app.menuitem.component';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FormLayoutComponent } from './components/formlayout/formlayout.component';
 import { FloatLabelComponent } from './components/floatlabel/floatlabel.component';
 import { InvalidStateComponent } from './components/invalidstate/invalidstate.component';
 import { InputComponent } from './components/input/input.component';
@@ -243,7 +242,8 @@ import { FournisseurListComponent } from './components/fournisseurs/fournisseur-
         VirtualScrollerModule,
         AppCodeModule,
         StyleClassModule,
-        MatStepperModule,MatFormFieldModule, MatInputModule,MatTableModule,MatPaginatorModule,MatSortModule
+        MatStepperModule,MatFormFieldModule, MatInputModule,MatTableModule,MatPaginatorModule,MatSortModule,
+        CommonModule      
         
     ],
     declarations: [
@@ -255,7 +255,6 @@ import { FournisseurListComponent } from './components/fournisseurs/fournisseur-
         AppMenuComponent,
         AppMenuitemComponent,
         DashboardComponent,
-        FormLayoutComponent,
         FloatLabelComponent,
         InvalidStateComponent,
         InputComponent,
