@@ -68,10 +68,11 @@ export class LandingComponent implements OnInit, OnDestroy {
   constructor(public configService: ConfigService, public router: Router) { }
 
   ngOnInit(): void {
-    this.config = this.configService.config;
-    this.subscription = this.configService.configUpdate$.subscribe(config => {
-      this.config = config;
-    });
+    console.log('hello landing page')
+    // this.config = this.configService.config;
+    // this.subscription = this.configService.configUpdate$.subscribe(config => {
+    //   this.config = config;
+    // });
   }
 
   ngOnDestroy(): void {

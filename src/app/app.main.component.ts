@@ -58,6 +58,7 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
     ngOnInit() {
         this.config = this.configService.config;
         this.subscription = this.configService.configUpdate$.subscribe(config => this.config = config);
+        console.log('hello app main comp')
     }
 
     ngAfterViewInit() {

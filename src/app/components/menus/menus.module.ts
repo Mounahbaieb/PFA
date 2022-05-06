@@ -7,9 +7,18 @@ import { SeatComponent } from './seat.component';
 import { PersonalComponent } from './personal.component';
 import { ConfirmationComponent } from './confirmation.component';
 import { MenusComponent } from './menus.component';
+import { SimulationComponent } from './simulation/simulation.component';
+import { FormulaireComponent } from './formulaire/formulaire.component';
+import { DocumentsComponent } from './documents/documents.component';
+import { RecapitulationComponent } from './recapitulation/recapitulation.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SimulationComponent,
+    FormulaireComponent,
+    DocumentsComponent,
+    RecapitulationComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild([
