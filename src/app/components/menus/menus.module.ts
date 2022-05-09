@@ -23,11 +23,13 @@ import { RecapitulationComponent } from './recapitulation/recapitulation.compone
     CommonModule,
     RouterModule.forChild([
         {path:'',component: MenusComponent, children:[
-				{path:'', redirectTo: 'personal', pathMatch: 'full'},
-				{path: 'personal', component: PersonalComponent},
-				{path: 'confirmation', component: ConfirmationComponent},
-				{path: 'seat', component: SeatComponent},
-				{path: 'payment', component: PaymentComponent}
+				// {path:'', redirectTo: 'personal', pathMatch: 'full'},
+				// {path: 'personal', component: PersonalComponent},
+        {path:'', redirectTo: 'simulateur', pathMatch: 'full'},
+				{path: 'simulateur', component: SimulationComponent},
+				{path: 'formulaire', component: FormulaireComponent},
+				{path: 'documents', component: DocumentsComponent},
+				{path: 'recapitulation', component: RecapitulationComponent}
         ]}
     ])
   ],
