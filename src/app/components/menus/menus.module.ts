@@ -7,6 +7,11 @@ import { FormulaireComponent } from './formulaire/formulaire.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { RecapitulationComponent } from './recapitulation/recapitulation.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { SliderModule } from 'primeng/slider';
+import { SlideMenuModule } from 'primeng/slidemenu';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -18,6 +23,12 @@ import { DropdownModule } from 'primeng/dropdown';
   imports: [
     CommonModule,
     DropdownModule,
+    SliderModule,
+    SlideMenuModule,
+    FormsModule,
+    InputTextModule,
+    ButtonModule,
+
     RouterModule.forChild([
         {path:'',component: MenusComponent, children:[
 				// {path:'', redirectTo: 'personal', pathMatch: 'full'},

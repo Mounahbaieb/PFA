@@ -8,14 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class SimulationComponent implements OnInit {
   value8: any;
   cities: any[];
+  valSlider = 50;
 
   constructor() {
     this.cities = [
-      {name: 'New York', code: 'NY'},
-      {name: 'Rome', code: 'RM'},
-      {name: 'London', code: 'LDN'},
-      {name: 'Istanbul', code: 'IST'},
-      {name: 'Paris', code: 'PRS'}
+      {name: 'BMW', code: 'bm'},
+      {name: 'Mercedes', code: 'Mr'},
+      {name: 'Golf', code: 'Go'},
+      {name: 'polo', code: 'Po'},
+      {name: 'Range Rover', code: 'Rr'}
   ];
    }
 
