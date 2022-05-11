@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MenusComponent } from './menus.component';
 import { SimulationComponent } from './simulation/simulation.component';
@@ -9,9 +9,10 @@ import { RecapitulationComponent } from './recapitulation/recapitulation.compone
 import { DropdownModule } from 'primeng/dropdown';
 import { SliderModule } from 'primeng/slider';
 import { SlideMenuModule } from 'primeng/slidemenu';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     InputTextModule,
     ButtonModule,
-
+    FormsModule,
+    ReactiveFormsModule,
+    DropdownModule,
     RouterModule.forChild([
         {path:'',component: MenusComponent, children:[
 				// {path:'', redirectTo: 'personal', pathMatch: 'full'},
