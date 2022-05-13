@@ -13,6 +13,13 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { AuthentificationDialogComponent } from './authentification-dialog/authentification-dialog.component';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,11 @@ import { BrowserModule } from '@angular/platform-browser';
     FormulaireComponent,
     DocumentsComponent,
     RecapitulationComponent,
+    AuthentificationDialogComponent
+
   ],
+    entryComponents:[AuthentificationDialogComponent],
+
   imports: [
     CommonModule,
     DropdownModule,
@@ -32,6 +43,12 @@ import { BrowserModule } from '@angular/platform-browser';
     FormsModule,
     ReactiveFormsModule,
     DropdownModule,
+    MatDialogModule,
+    ConfirmDialogModule,
+    DialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule.forChild([
         {path:'',component: MenusComponent, children:[
 				// {path:'', redirectTo: 'personal', pathMatch: 'full'},

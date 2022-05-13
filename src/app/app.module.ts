@@ -152,6 +152,7 @@ import { UserFormComponent } from './components/users/user-form/user-form.compon
 import { MessageService } from 'primeng/api';
 import { FournisseurFormComponent } from './components/fournisseurs/fournisseur-form/fournisseur-form.component';
 import { FournisseurListComponent } from './components/fournisseurs/fournisseur-list/fournisseur-list.component';
+import { ClientService } from './service/client.service';
 @NgModule({
     imports: [
         BrowserModule,
@@ -296,6 +297,7 @@ import { FournisseurListComponent } from './components/fournisseurs/fournisseur-
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService, MenuService, ConfigService,MessageService,
+        ClientService,
         { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true }
 
     ],

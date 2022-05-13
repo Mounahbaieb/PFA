@@ -1,9 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService, SelectItem } from 'primeng/api';
 import { Client } from 'src/app/api/client';
 import { Gender } from 'src/app/api/gender';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ClientService } from 'src/app/service/client.service';
+import { AuthentificationDialogComponent } from '../authentification-dialog/authentification-dialog.component';
+import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
 
+export interface AuthentificationData {
+  username: string;
+  password: string;
+}
 @Component({
   selector: 'app-formulaire',
   templateUrl: './formulaire.component.html',
@@ -12,42 +20,47 @@ import { Gender } from 'src/app/api/gender';
 export class FormulaireComponent implements OnInit {
   //sexe: Gender;
   sexe: any[];
+  client:Client;
   etatCivil:any[];
   nationalite:any[];
-  client:Client;
   submitted:boolean;
   clientForm: FormGroup;
   selectedDrop: SelectItem;
+  username: string;
+  c:any;
 
-  constructor(private fb:FormBuilder,private messageService: MessageService) {
+
+
+  constructor(private fb:FormBuilder,private clientService:ClientService ,private messageService: MessageService,public dialog: MatDialog) {
     this.clientForm = this.fb.group({
-      nom: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-      prenom: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-      Gender: ['', Validators.required],
-      birthDate:['', Validators.required],
-      birthPlace: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      jobTitle: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-      matrialStatus: ['', Validators.required],
-      phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-      landline: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-      email: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-      nationalite:['',Validators.required]
+      nom: ["islem", Validators.compose([Validators.required, Validators.minLength(3)])],
+      prenom: ["mahdi", Validators.compose([Validators.required, Validators.minLength(3)])],
+    //   Gender: ['', Validators.required],
+    // birthDate:['', Validators.required],
+    //    birthPlace: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+    //    jobTitle: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+    //   matrialStatus: ['', Validators.required],
+    //   phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+    //   landline: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+      email: ["islemmahdi0@gmail.com", Validators.compose([Validators.required, Validators.minLength(8)])],
+    //nationalite:['',Validators.required]
     });
     this.sexe = [
-      {name: 'Feminin'},
-      {name: 'Masculin'}
+      {type: 'Feminin'},
+      {type: 'Masculin'}
   ];
   this.etatCivil=[
-    { name:'veuve'},
-   { name:'mariée'},
+    { etat:'veuve'},
+   { etat:'mariée'},
    {
-     name:'divorcée'
+    etat:'divorcée'
    },
-   { name:'Célibataire'}
+   { etat:'Célibataire'}
 
 
     
   ]
+  
   this.nationalite=[
    { name:'Afghane (Afghanistan)'},
     {name: 'Albanaise (Albanie)'},
@@ -253,16 +266,76 @@ export class FormulaireComponent implements OnInit {
 
   ngOnInit(): void {
    // this.getSexe();
+   this.client={
+     id:null,
+    nom:"islem",
+    prenom:"mahdi",
+    password:"",
+    gender:null,
+    birthDate:"",
+    birthPlace:"",
+    jobtitle:"",
+    matrialStatus:"",
+    phoneNumber:"",
+    landline:"",
+    email:"islemmahdi0@gmail.com",
+    resident:"",
+    nationality:"",
+   }
+   
   }
-  saveClient(){
-    this.submitted = true;
-    if(this.clientForm.valid){
-      console.log("hello");
-    }
+      email: string;
+    openDialog(): void {
+    this.submitted=true
+    console.log("heloo")
+  if(this.clientForm.valid){
+      console.log("hello Valid");
+     console.log(this.clientForm.value);
+      this.client=Object.assign(this.client,this.clientForm.value);
+      console.log("this",this.client);
+      this.clientService.addClient(this.client);
+      console.log("thissss",this.client.email)
+      this.clientForm.reset();
+      const dialogRef = this.dialog.open(AuthentificationDialogComponent, {
+           width: '250px',
+          data: {email: this.client.email, password: this.client.password},
+
+         });
+   dialogRef.afterClosed().subscribe(result => {
+       console.log('The dialog was closed');
+       this.client.email = result;
+    });
   }
+    // const dialogRef = this.dialog.open(AuthentificationDialogComponent, {
+    //   width: '250px',
+    //   data: {name: this.name, animal: this.animal},
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
+    
+  
+
+
+
+  }
+
+  getEmail(){
+    console.log(this.clientForm.value);
+  } 
+}  
+
+  
+
+  
+  // onNoClick(): void {
+  //   this.dialogRef.close();
+  // }
+
   // getSexe(){
   //   console.log("hello");
   //   console.log(this.sexe);
 
   // }
-}
