@@ -5,8 +5,8 @@ import { Client } from 'src/app/api/client';
 import { Gender } from 'src/app/api/gender';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ClientService } from 'src/app/service/client.service';
-import { AuthentificationDialogComponent } from '../authentification-dialog/authentification-dialog.component';
 import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
+import { AuthentificationDialogComponent } from '../authentification-dialog/authentification-dialog.component';
 
 export interface AuthentificationData {
   username: string;
@@ -339,3 +339,4 @@ export class FormulaireComponent implements OnInit {
   //   console.log(this.sexe);
 
   // }
+

@@ -153,6 +153,7 @@ import { MessageService } from 'primeng/api';
 import { FournisseurFormComponent } from './components/fournisseurs/fournisseur-form/fournisseur-form.component';
 import { FournisseurListComponent } from './components/fournisseurs/fournisseur-list/fournisseur-list.component';
 import { ClientService } from './service/client.service';
+import { AuthentificationDialogComponent } from './components/menus/authentification-dialog/authentification-dialog.component';
 @NgModule({
     imports: [
         BrowserModule,

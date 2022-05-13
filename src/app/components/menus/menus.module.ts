@@ -3,7 +3,7 @@ import { CommonModule, NgClass } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MenusComponent } from './menus.component';
 import { SimulationComponent } from './simulation/simulation.component';
-import { FormulaireComponent } from './formulaire/formulaire.component';
+import {FormulaireComponent } from './formulaire/formulaire.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { RecapitulationComponent } from './recapitulation/recapitulation.component';
 import { DropdownModule } from 'primeng/dropdown';
@@ -17,9 +17,9 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthentificationDialogComponent } from './authentification-dialog/authentification-dialog.component';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AuthentificationDialogComponent } from './authentification-dialog/authentification-dialog.component';
 
 @NgModule({
   declarations: [

@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Client } from 'src/app/api/client';
-import { DialogData } from 'src/app/api/dialogeData';
 import { ClientService } from 'src/app/service/client.service';
 
 @Component({
@@ -10,8 +9,8 @@ import { ClientService } from 'src/app/service/client.service';
   templateUrl: './authentification-dialog.component.html',
   styleUrls: ['./authentification-dialog.component.scss']
 })
-
 export class AuthentificationDialogComponent implements OnInit {
+
   minPw = 8;
   dialogForm: FormGroup;
   client:Client;
@@ -26,7 +25,6 @@ export class AuthentificationDialogComponent implements OnInit {
   }
   get password() { return this.dialogForm.get('password'); }
   ngOnInit(): void {
-    console.log(this.data.email)
     this.dialogForm = this.dialogBuilder.group({
       password: ['', [Validators.required, Validators.minLength(this.minPw)]],
     });
@@ -41,5 +39,6 @@ export class AuthentificationDialogComponent implements OnInit {
   //   this.client=this.clientService.getClient();
 
   // }
+
 
 }
