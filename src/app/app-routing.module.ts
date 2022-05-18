@@ -30,6 +30,7 @@ import { AccessComponent } from './components/access/access.component';
 import { LoginGuard } from './service/auth/login.guard';
 import { FournisseurListComponent } from './components/menu-back-office/fournisseurs/fournisseur-list/fournisseur-list.component';
 import { UserListComponent } from './components/menu-back-office/users/user-list/user-list.component';
+import { InfoComponent } from './components/info/info.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -37,9 +38,9 @@ import { UserListComponent } from './components/menu-back-office/users/user-list
                 path: '', component: AppMainComponent,
                 //canActivate: [LoginGuard],
                 children: [
+                    {path:'', redirectTo: 'menu-landing', pathMatch: 'full'},
                     {path: 'menu-landing', loadChildren: () => import('./components/menus/menus.module').then(m => m.MenusModule)},
                     {path: 'menu-back-office', loadChildren: () => import('./components/menu-back-office/menu-back-office.module').then(m => m.MenuBackOfficeModule)},
-
                     {path: 'yy', component: DashboardComponent},
                     {path: 'uikit/input', component: InputComponent},
                     {path: 'uikit/floatlabel', component: FloatLabelComponent},
@@ -50,12 +51,13 @@ import { UserListComponent } from './components/menu-back-office/users/user-list
                     // {path: 'uikit/tree', component: TreeComponent},
                     {path: 'uikit/panel', component: PanelsComponent},
                     {path: 'uikit/overlay', component: OverlaysComponent},
-                    {path: 'uikit/media', component: MediaComponent},
+                    {path:'menu-landing/info',component:InfoComponent},
+                    {path: 'menu-landing/voitures', component: MediaComponent},
                     {path: 'pageZero', component: MediaComponent},
 
                     {path: 'uikit/message', component: MessagesComponent},
-                   // {path: 'uikit/misc', component: MiscComponent},
-                   // {path: 'uikit/charts', component: ChartsComponent},
+                    {path: 'uikit/misc', component: MiscComponent},
+                   {path: 'uikit/charts', component: ChartsComponent},
                     {path: 'uikit/file', component: FileComponent},
                    // {path: 'pages/crud', component: CrudComponent},
                     {path: 'pages/users', component: UserListComponent},

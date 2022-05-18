@@ -13,7 +13,27 @@ import { AppMainComponent } from './app.main.component';
                     </ul>
                 </li>
             </ul>
+
         </div>
+        <div>
+        <img class="verticalhorizontal" src="/assets/layout/images/credit.jpg" alt="centered image" />
+    </div> 
+    <h4> Leasing</h4>  
+    <p>
+    le leasing est un  cpntrat de location de voitures entre un loueur spécialisé et un particulier
+    ou un professionnel ...        
+ <button pButton pRipple type="button" label="Voici quelques ...." class="p-button-info p-button-text mr-2 mb-2"  [routerLink]="['/menu-landing/info']"></button>
+    </p>
+
+    <style>
+    .verticalhorizontal {
+        display: table-cell;
+        height: 200px;
+        text-align: center;
+        width: 250px;
+        vertical-align: middle;
+    }
+    </style>  
     `
 })
 export class AppMenuComponent implements OnInit {
@@ -27,15 +47,15 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Home',
                 items:[
-                    {label: 'Dashboar',icon: 'pi pi-fw pi-home', routerLink: ['/']}
+                    {label: 'Dashboar',icon: 'pi pi-fw pi-home', routerLink: ['/menu-landing']}
                 ]
             },
             {
-                label: 'UI Components',
+                label: 'Info',
                 items: [
-                    {label: 'Gestion des utilisateurs', icon: 'pi pi-fw pi-users', routerLink: ['/pages/users']},
-                    {label: 'Gestion des fournisseurs', icon: 'pi pi-fw pi-id-card', routerLink: ['/pages/fourisseurs']},
-                   // {label:'formulaire',icon:'pi pi-fw pi-id-card',routerLink:['/']}
+                    {label: 'Consulter les voitures neuves', icon: 'pi pi-fw pi-car', routerLink: ['/menu-landing/voitures']},
+                    // {label: 'Gestion des fournisseurs', icon: 'pi pi-fw pi-id-card', routerLink: ['/pages/fourisseurs']},
+                    //{label:'formulaire',icon:'pi pi-fw pi-id-card',routerLink:['/']}
                     // {label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout']},
                     //{label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input']},
                    // {label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel']},
@@ -134,6 +154,7 @@ export class AppMenuComponent implements OnInit {
             //     ]
             // }
         ];
+
     }
 
     onKeydown(event: KeyboardEvent) {

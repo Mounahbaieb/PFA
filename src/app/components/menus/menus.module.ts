@@ -16,12 +16,12 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AuthentificationDialogComponent } from './authentification-dialog/authentification-dialog.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
-
+import { StepsModule } from 'primeng/steps';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormulaireComponent,
     DocumentsComponent,
     RecapitulationComponent,
-    AuthentificationDialogComponent
+    AuthentificationDialogComponent,
+
 
   ],
     entryComponents:[AuthentificationDialogComponent],
@@ -43,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     InputTextModule,
     ButtonModule,
+    StepsModule,
     FormsModule,
     ReactiveFormsModule,
     DropdownModule,
@@ -61,7 +63,7 @@ import { HttpClientModule } from '@angular/common/http';
 				{path: 'simulateur', component: SimulationComponent},
 				{path: 'formulaire', component: FormulaireComponent},
 				{path: 'documents', component: DocumentsComponent},
-				{path: 'recapitulation', component: RecapitulationComponent}
+				{path: 'recapitulation', component: RecapitulationComponent},
         ]}
     ])
   ],

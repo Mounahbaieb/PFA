@@ -113,7 +113,6 @@ confirmDelete(){
   this.deleteUserDialog = false;
   console.log(this.user.id);
   this.userService.delete(this.user.id).subscribe(data=>{
-    
     this.getUsers();
     this.userService.getTotal().subscribe((data:any)=>{  
       this.length=data; 

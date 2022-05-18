@@ -35,6 +35,7 @@ export class MenusComponent implements OnInit {
             {label: 'Remplir le formulaire', routerLink:'formulaire'},
             {label: 'charger des documents', routerLink:'documents'},
             {label: 'recapitulation', routerLink:'recapitulation'},
+            
         ];
     }
 }

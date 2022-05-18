@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { SelectItem } from 'primeng/api';
+import { MegaMenuItem, MenuItem, SelectItem } from 'primeng/api';
 import { ProduitService } from 'src/app/service/produit.service';
 import {Product} from 'src/app/api/product';
 import { SimulationService } from 'src/app/service/simulation.service';
@@ -29,6 +29,27 @@ export class SimulationComponent implements OnInit {
   demandeDeCredit:DemandeDeCredit;
 
   sliderMove:boolean=false;
+  routeItems: MenuItem[];
+  breadcrumbItems: MenuItem[];
+
+  tieredItems: MenuItem[];
+
+  items: MenuItem[];
+
+
+  megaMenuItems: MegaMenuItem[];
+
+  panelMenuItems: MenuItem[];
+
+  stepsItems: MenuItem[];
+
+  slideItems: MenuItem[];
+
+  menuItems: MenuItem[];
+
+  plainMenuItems: MenuItem[];
+
+  pageIndex: number = 0;
 
   constructor(private router:Router,private fb:FormBuilder,private produitService:ProduitService,private simulationService:SimulationService) {
   this.simulationForm = this.fb.group({
@@ -42,6 +63,13 @@ export class SimulationComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.routeItems = [
+      {label: 'Simulateur de Financement', routerLink:'simulateur'},
+      {label: 'Remplir le formulaire', routerLink:'formulaire'},
+      {label: 'charger des documents', routerLink:'documents'},
+      {label: 'recapitulation', routerLink:'recapitulation'},
+      
+  ];
     this.getAllProduct();
     this.demandeDeCredit={
       productId:"",

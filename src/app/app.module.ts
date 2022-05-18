@@ -145,6 +145,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { LoginInterceptor } from './service/auth/login.interceptor';
 import { MessageService } from 'primeng/api';
 import { ClientService } from './service/client.service';
+import {InfoComponent} from '../app/components/info/info.component';
+
 import {MatSliderModule} from '@angular/material/slider';
 @NgModule({
     imports: [
@@ -282,6 +284,7 @@ import {MatSliderModule} from '@angular/material/slider';
         ErrorComponent,
         NotfoundComponent,
         AccessComponent,
+        InfoComponent,
 
     ],
     providers: [

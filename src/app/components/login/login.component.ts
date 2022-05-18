@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate([this.routers.DASHBOARD]).then();
     }
     this.form = new FormGroup({
-      email: new FormControl("seif", [Validators.required]),
+      email: new FormControl("slayma", [Validators.required]),
       password: new FormControl("", [Validators.required])
     });
   

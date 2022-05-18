@@ -8,7 +8,7 @@ import { SlideMenuModule } from 'primeng/slidemenu';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import {MenuService} from '../../service/app.menu.service'
-import { AppMenuitemComponent } from './app.menuitem.component';
+//import { AppMenuitemComponent } from './app.menuitem.component';
 import { StepsModule } from 'primeng/steps';
 import { FournisseurFormComponent } from './fournisseurs/fournisseur-form/fournisseur-form.component';
 import { FournisseurListComponent } from './fournisseurs/fournisseur-list/fournisseur-list.component';
@@ -104,6 +104,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppCodeModule } from '../app-code/app.code.component';
+import { AppMenuitemComponent } from './app.menuitem.component';
+import { ConfigService } from 'src/app/service/app.config.service';
 
 @NgModule({
   declarations: [
@@ -117,12 +119,11 @@ import { AppCodeModule } from '../app-code/app.code.component';
 
   ],
   imports: [
-    BrowserModule,
+   // BrowserModule,
         FormsModule,
-        ReactiveFormsModule,
-        AppRoutingModule,
+      ReactiveFormsModule,
         HttpClientModule,
-        BrowserAnimationsModule,
+       // BrowserAnimationsModule,
         AccordionModule,
         AutoCompleteModule,
         AvatarModule,
@@ -216,7 +217,7 @@ import { AppCodeModule } from '../app-code/app.code.component';
         ]}
     ])
     ],providers:[
-      MenuService
+      MenuService,ConfigService
     ]
 
 
