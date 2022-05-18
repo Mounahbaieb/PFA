@@ -1,9 +1,9 @@
 export interface  fournisseur{
     id?: string;
-    lastName?:String,
-    firstName?:String,
-    birthDate?:Date,
-    phoneNumber?:String,
-    email?:String,
-    ville?:String
+    lastName?:string,
+    firstName?:string,
+    birthDate?:string,
+    phoneNumber?:string,
+    email?:string,
+    ville?:string
 }

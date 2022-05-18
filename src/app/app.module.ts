@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-
 import { StyleClassModule } from 'primeng/styleclass';
 import { AccordionModule } from 'primeng/accordion';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -88,7 +87,6 @@ import { TreeSelectModule } from 'primeng/treeselect';
 import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { BlockViewer } from './components/blockviewer/blockviewer.component';
- 
 import { AppCodeModule } from './components/app-code/app.code.component';
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
@@ -97,7 +95,6 @@ import { AppFooterComponent } from './app.footer.component';
 import { AppConfigComponent } from './app.config.component';
 import { AppMenuComponent } from './app.menu.component';
 import { AppMenuitemComponent } from './app.menuitem.component';
-
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FloatLabelComponent } from './components/floatlabel/floatlabel.component';
 import { InvalidStateComponent } from './components/invalidstate/invalidstate.component';
@@ -125,7 +122,6 @@ import { ConfirmationComponent } from './components/menus/confirmation.component
 import { PersonalComponent } from './components/menus/personal.component';
 import { SeatComponent } from './components/menus/seat.component';
 import { LandingComponent } from './components/landing/landing.component';
-
 import { CountryService } from './service/countryservice';
 import { CustomerService } from './service/customerservice';
 import { EventService } from './service/eventservice';
@@ -140,7 +136,6 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import {  ReactiveFormsModule } from '@angular/forms';
-import { UserListComponent } from './components/users/user-list/user-list.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -148,12 +143,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { LoginInterceptor } from './service/auth/login.interceptor';
-import { UserFormComponent } from './components/users/user-form/user-form.component';
 import { MessageService } from 'primeng/api';
-import { FournisseurFormComponent } from './components/fournisseurs/fournisseur-form/fournisseur-form.component';
-import { FournisseurListComponent } from './components/fournisseurs/fournisseur-list/fournisseur-list.component';
 import { ClientService } from './service/client.service';
-import { AuthentificationDialogComponent } from './components/menus/authentification-dialog/authentification-dialog.component';
+import {MatSliderModule} from '@angular/material/slider';
 @NgModule({
     imports: [
         BrowserModule,
@@ -180,7 +172,7 @@ import { AuthentificationDialogComponent } from './components/menus/authentifica
         CodeHighlighterModule,
         ConfirmDialogModule,
         ConfirmPopupModule,
-        ColorPickerModule,
+        ColorPickerModule,        
         ContextMenuModule,
         DataViewModule,
         DialogModule,
@@ -237,6 +229,7 @@ import { AuthentificationDialogComponent } from './components/menus/authentifica
         ToastModule,
         ToggleButtonModule,
         ToolbarModule,
+        MatSliderModule,
         TooltipModule,
         TreeModule,
         TreeSelectModule,
@@ -289,10 +282,7 @@ import { AuthentificationDialogComponent } from './components/menus/authentifica
         ErrorComponent,
         NotfoundComponent,
         AccessComponent,
-        UserListComponent,
-        UserFormComponent,
-        FournisseurFormComponent,
-        FournisseurListComponent,
+
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

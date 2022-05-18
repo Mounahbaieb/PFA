@@ -1,13 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MessageService, SelectItem } from 'primeng/api';
 import { Client } from 'src/app/api/client';
-import { Gender } from 'src/app/api/gender';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ClientService } from 'src/app/service/client.service';
-import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
-import { AuthentificationDialogComponent } from '../authentification-dialog/authentification-dialog.component';
-
 export interface AuthentificationData {
   username: string;
   password: string;
@@ -25,26 +21,49 @@ export class FormulaireComponent implements OnInit {
   nationalite:any[];
   submitted:boolean;
   clientForm: FormGroup;
-  selectedDrop: SelectItem;
+  inscriptionForm:FormGroup;
+  selectedDropSexe: SelectItem;
+  selectedDropEtatCivil:SelectItem;
+  selectedDropNationality:SelectItem;
   username: string;
-  c:any;
-
-
-
+  authentificationDialog:boolean=false;
+  c:Client;
+  inscrptionDialog:boolean=false;
+  clientsDataSource:any;
+  email: string;
+  authentificationForm:FormGroup
+// MatPaginator Inputs
+pageNo=0;
+length = 100;
+pageSize=10;
+pageSizeOptions: number[] = [5, 10, 25, 100];
+sortBy=""
   constructor(private fb:FormBuilder,private clientService:ClientService ,private messageService: MessageService,public dialog: MatDialog) {
+
     this.clientForm = this.fb.group({
-      nom: ["islem", Validators.compose([Validators.required, Validators.minLength(3)])],
-      prenom: ["mahdi", Validators.compose([Validators.required, Validators.minLength(3)])],
-    //   Gender: ['', Validators.required],
-    // birthDate:['', Validators.required],
-    //    birthPlace: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-    //    jobTitle: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-    //   matrialStatus: ['', Validators.required],
-    //   phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-    //   landline: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-      email: ["islemmahdi0@gmail.com", Validators.compose([Validators.required, Validators.minLength(8)])],
-    //nationalite:['',Validators.required]
-    });
+
+      lastName: ['', Validators.compose([Validators.required, Validators.minLength(3)])],    
+      firstName: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      email: ['', Validators.compose([Validators.required, Validators.minLength(8)])],  
+      Gender: ['', Validators.required],
+      birthDate:['', Validators.required],
+      birthPlace: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      jobTitle: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+       matrialStatus: ['', Validators.required],
+       phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+       landline: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+    nationalite:['',Validators.required],
+
+  
+  // }, {validator: passwordMatchValidator});
+  
+   })
+   this.authentificationForm=this.fb.group({
+        password:['', Validators.compose([Validators.required, Validators.minLength(8)])],
+       confirmpassword: ['', [Validators.required]]
+   },{
+    validator:passwordMatchValidator})
+
     this.sexe = [
       {type: 'Feminin'},
       {type: 'Masculin'}
@@ -268,8 +287,8 @@ export class FormulaireComponent implements OnInit {
    // this.getSexe();
    this.client={
      id:null,
-    nom:"islem",
-    prenom:"mahdi",
+    lastName:"",
+    firstName:"",
     password:"",
     gender:null,
     birthDate:"",
@@ -278,58 +297,137 @@ export class FormulaireComponent implements OnInit {
     matrialStatus:"",
     phoneNumber:"",
     landline:"",
-    email:"islemmahdi0@gmail.com",
-    resident:"",
+    email:"",
+    // resident:"",
     nationality:"",
    }
    
   }
-      email: string;
-    openDialog(): void {
-    this.submitted=true
-    console.log("heloo")
-  if(this.clientForm.valid){
-      console.log("hello Valid");
-     console.log(this.clientForm.value);
-      this.client=Object.assign(this.client,this.clientForm.value);
-      console.log("this",this.client);
-      this.clientService.addClient(this.client);
-      console.log("thissss",this.client.email)
-      this.clientForm.reset();
-      const dialogRef = this.dialog.open(AuthentificationDialogComponent, {
-           width: '250px',
-          data: {email: this.client.email, password: this.client.password},
+      // suivant(){
+      //   this.submitted=true
+      //   if(this.clientForm.valid){
+      //     console.log("hello");
+      //     this.authentificationDialog = true;
 
-         });
-   dialogRef.afterClosed().subscribe(result => {
-       console.log('The dialog was closed');
-       this.client.email = result;
-    });
-  }
-    // const dialogRef = this.dialog.open(AuthentificationDialogComponent, {
-    //   width: '250px',
-    //   data: {name: this.name, animal: this.animal},
-    // });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
-    
+      //   }
+      // }
+    openDialog() {
+        console.log('aloo')
+        this.submitted = true;
+        if(this.clientForm.valid){
+          console.log('hdhdhdhhddh')
+          this.authentificationDialog = true;
+          this.email=this.clientForm.value.email;
+          console.log(this.client.email);
+        }
+        
+        // if(this.clientForm.valid){
+        // console.log("llklklklhello");
+        //        }
+      //   }
+      //   this.authentificationDialog = true;
+      //  
+        
   
-
+  }
+  authentifier(){
+    console.log('hello authentification')
+    console.log(this.client.email);
+    this.clientService.getClientByEmail(this.clientForm.value.email)
+    .subscribe(data=>{
+      this.c=data;
+      console.log(this.c);
+      console.log(this.authentificationForm.value.password);
+   if(this.c==null){
+     console.log("vous n'avez pas de compte s'il vous plait faire l'inscription");
+    }
+     else{
+       if(this.authentificationForm.value.password==this.c.password){
+         console.log("wleyyyeww logged In");
+         this.authentificationDialog=false;
+         
+       }
+       else{
+         console.log("mots de passe incorrect")
+         this.client={};
+       }
+     }
+    
+    })
 
 
   }
+  // isLoggedIn(){
+  //   this.clientService.getClientByEmail(this.client.email).subscribe(data=>{
+  //     this.c=data;
+  //     console.log(this.c);
+  //   })
+  //  }
+  inscriptionDialog(){
+    this.inscrptionDialog = true;
+    this.authentificationDialog=false;
+  }
+  inscription(){  
+    this.submitted=true
+    if(this.clientForm.valid){
+      this.client={}
+      this.inscrptionDialog = false;
+      this.submitted=false;
+      this.client.lastName=this.clientForm.value.lastName
+      console.log('dddddddd',this.client.lastName);
+      this.client.firstName=this.clientForm.value.firstName
+      this.client.email=this.clientForm.value.email
+      this.client.password=this.authentificationForm.value.password
+      this.client.birthDate=this.clientForm.value.birthDate,
+      this.client.birthPlace=this.clientForm.value.birthPlace,
+      this.client.gender=this.clientForm.value.Gender,
+      this.client.jobtitle=this.clientForm.value.jobTitle,
+      this.client.landline=this.clientForm.value.landline,
+      this.client.matrialStatus=this.clientForm.value.matrialStatus,
+     this.client.nationality=this.clientForm.value.nationalite,
+      this.client.phoneNumber=this.clientForm.value.phoneNumber,
+      this.clientService.save(this.client).subscribe((data:any)=>{
+        console.log('client',this.client);
+        this.client={}
+        this.getCLients();
+        this.clientService.getTotal().subscribe((data:any)=>{  
+          this.length=data;
+          console.log(this.length);
 
-  getEmail(){
-    console.log(this.clientForm.value);
-  } 
+        })
+      })
+
+    }
+
+    this.authentificationDialog = false;
+  
+  }
+
+  get password() { return this.authentificationForm.get('password'); }
+  get confirmpassword() { return this.authentificationForm.get('confirmpassword'); }
+
+onPasswordInput(){
+  if (this.authentificationForm.hasError('passwordMismatch'))
+      this.confirmpassword.setErrors([{'passwordMismatch': true}]);
+    else
+      this.confirmpassword.setErrors(null);
+}
+getCLients(){
+  this.clientService.findAll(this.pageNo,this.pageSize,this.sortBy).subscribe(data=>{
+    this.clientsDataSource=data
+   })
+   
+}
 }  
 
-  
+export const passwordMatchValidator: ValidatorFn = (clientForm: FormGroup): ValidationErrors | null => {
+  if (clientForm.get('password').value === clientForm.get('confirmpassword').value)
+    return null;
+  else
+    return {passwordMismatch: true};
+};
 
-  
+
   // onNoClick(): void {
   //   this.dialogRef.close();
   // }

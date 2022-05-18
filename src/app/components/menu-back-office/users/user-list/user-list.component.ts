@@ -111,11 +111,14 @@ deleteProduct(user: user) {
 
 confirmDelete(){
   this.deleteUserDialog = false;
+  console.log(this.user.id);
   this.userService.delete(this.user.id).subscribe(data=>{
+    
     this.getUsers();
     this.userService.getTotal().subscribe((data:any)=>{  
       this.length=data; 
-      console.log(this.length)
+      console.log("hdhdhdh",this.length)
+      this.getUsers();
     })
     this.user = null;
     this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Utilisateur supprimé', life: 3000});
@@ -123,6 +126,5 @@ confirmDelete(){
 
  
 }
-
 
 }

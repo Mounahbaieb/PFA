@@ -28,8 +28,8 @@ import { ErrorComponent } from './components/error/error.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AccessComponent } from './components/access/access.component';
 import { LoginGuard } from './service/auth/login.guard';
-import { UserListComponent } from './components/users/user-list/user-list.component';
-import { FournisseurListComponent } from './components/fournisseurs/fournisseur-list/fournisseur-list.component';
+import { FournisseurListComponent } from './components/menu-back-office/fournisseurs/fournisseur-list/fournisseur-list.component';
+import { UserListComponent } from './components/menu-back-office/users/user-list/user-list.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([

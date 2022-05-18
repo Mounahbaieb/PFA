@@ -11,5 +11,6 @@ export class RecapitulationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 }

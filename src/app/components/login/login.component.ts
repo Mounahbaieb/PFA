@@ -33,19 +33,11 @@ export class LoginComponent implements OnInit {
   valCheck: string[] = ['remember'];
 
   password: string;
-  
   config: AppConfig;
-  
   subscription: Subscription;
-
   form:FormGroup;
   error=false;
   public routers: typeof routes = routes;
-
-  
-
-   
-
   constructor(public configService: ConfigService,private fb:FormBuilder, 
     private authService: LoginService, 
      private router: Router){

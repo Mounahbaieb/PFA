@@ -1,3 +1,4 @@
+
  <h2 class="title text-center">
     <span class="text-primary">Simulateur </span>
      de Financement
@@ -6,30 +7,41 @@
     <form [formGroup]="simulationForm">
         <div class="field col-12 md:col-4">
              <h5>Véhicule</h5>
-            <p-dropdown matColumnDef="vehicule"id="vehicule" formControlName="vehicule" required [options]="cities" optionLabel="name" [(ngModel)]="selectedDrop" placeholder="Choisir une Véhicule"  [ngClass]="{'ng-invalid ng-dirty' : submitted && simulationForm.controls['vehicule'].errors}"  [showClear]="true">
+            <p-dropdown matColumnDef="vehicule"id="vehicule" formControlName="vehicule" required [options]="vehicules" optionLabel="name" [(ngModel)]="selectedDrop" placeholder="Choisir une Véhicule"  [ngClass]="{'ng-invalid ng-dirty' : submitted && simulationForm.controls['vehicule'].errors}"  [showClear]="true">
             </p-dropdown>
             <div *ngIf="simulationForm.controls['vehicule'].errors">
     <small class="error" *ngIf="submitted && simulationForm.controls['vehicule'].errors.required">*Le champs vehicule est obligatoire.</small>
 
     </div>
-            <div class="field col-12">
-                <h5>Echeance</h5>
+            <div  class="field col-12">
+                <h5 >Echeance En DT</h5>
             <input type="text"id="echeance" pInputText  formControlName="echeance"[(ngModel)]="valSlider" readonly/>
-            <p-slider matColumnDef="echeance" formControlName="echeance" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && simulationForm.controls['echeance'].errors}"  [(ngModel)]="valSlider"></p-slider>
-            <div *ngIf="simulationForm.controls['echeance'].errors">
+ <p-slider  matColumnDef="echeance" formControlName="echeance" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && simulationForm.controls['echeance'].errors}"  [(ngModel)]="valSlider"></p-slider>
+
+
+ <div *ngIf="simulationForm.controls['echeance'].errors">
                 <small class="error" *ngIf="submitted && simulationForm.controls['echeance'].errors.required">*Le champs echéance est obligatoire.</small>
         </div>
         </div>
+        <!-- <mat-slider
+  thumbLabel
+  [displayWith]="formatLabel"
+  tickInterval="1000"
+  step="1000"
+  min="0"
+  max="100000"
+  aria-label="units"></mat-slider> -->
+
             <div class="field col-12 md:col-4">
-                <h5> Durée</h5> 
-               <input type="text" id="duree" pInputText  formControlName="duree" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && simulationForm.controls['duree'].errors}"  />
+                <h5> Durée En mois</h5> 
+               <input type="text" id="duree" pInputText  formControlName="duree" [(ngModel)]="duree" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && simulationForm.controls['duree'].errors}"  />
                <div *ngIf="simulationForm.controls['duree'].errors">
                 <small class="error" *ngIf="submitted && simulationForm.controls['duree'].errors.required">*Le champs duréé est obligatoire.</small>
             </div>
 
     
         </div>
-            <button pButton pRipple type="button" label="Suivant" class="p-button-info p-button-text mr-2 mb-2"(click)="suivant()"></button>
+            <button pButton pRipple type="button" label="Suivant" class="p-button-info p-button-text mr-2 mb-2"(click)="saveSimulation()"></button>
 
         </div>
     </form>

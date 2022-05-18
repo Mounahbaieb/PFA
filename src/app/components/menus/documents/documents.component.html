@@ -1,5 +1,18 @@
-<p>documents works!</p>
-<div class="flex flex-column align-items-center justify-content-center h-full py-5 px-3">
-    <i class="pi pi-fw pi-ticket mr-2 text-2xl"></i>
-    <p class="m-0 mt-5 text-center text-lg">Seat Component Content via Child Route</p>
+<div class="grid">
+  <div class="col-12">
+      <div class="card">
+          <h5>Advanced</h5>
+          <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
+                        multiple="multiple" accept="image/*" maxFileSize="1000000">
+              <ng-template pTemplate="content">
+                  <ul *ngIf="uploadedFiles.length">
+                      <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                  </ul>
+              </ng-template>
+          </p-fileUpload>
+
+          <h5>Basic</h5>
+          <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" chooseLabel="Browse"></p-fileUpload>
+      </div>
   </div>
+</div>

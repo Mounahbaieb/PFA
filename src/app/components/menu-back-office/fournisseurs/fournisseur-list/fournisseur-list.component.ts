@@ -62,6 +62,7 @@ getFournisseurs(){
   this.fournisseurService.findAll(this.pageNo,this.pageSize,this.sortBy)
   .subscribe(data=>{
     this.fournisseursDataSource=data
+    console.log(this.fournisseursDataSource);
    })
    
 }
@@ -89,6 +90,7 @@ saveFournisseur(){
     this.fournisseur.ville=this.fournisseurForm.value.ville
     this.fournisseur.phoneNumber=this.fournisseurForm.value.phoneNumber
     this.fournisseurService.save(this.fournisseur).subscribe((data:any)=>{
+      console.log(this.fournisseur);
       this.fournisseur={}
       this.getFournisseurs();
       this.fournisseurService.getTotal().subscribe((data:any)=>{  
@@ -101,7 +103,6 @@ deleteFournisseur(fournisseur: fournisseur) {
    this.deleteFournisseurDialog = true;
   this.fournisseur = {...fournisseur};
 }
-
 confirmDelete(){
   this.deleteFournisseurDialog = false;
   this.fournisseurService.delete(this.fournisseur.id).subscribe(data=>{
@@ -109,16 +110,12 @@ confirmDelete(){
     this.fournisseurService.getTotal().subscribe((data:any)=>{  
       this.length=data;
       console.log(this.length)
+      console.log('hey deleted');
       this.getFournisseurs();
     })
     this.fournisseur = null;
     this.messageService.add({severity: 'success', summary: 'Successful', detail: 'fournisseur supprimé', life: 3000});
   }) 
 }
-
-
-
-
-
 
 }
