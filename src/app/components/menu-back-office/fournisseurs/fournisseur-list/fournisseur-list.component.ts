@@ -105,7 +105,9 @@ deleteFournisseur(fournisseur: fournisseur) {
 }
 confirmDelete(){
   this.deleteFournisseurDialog = false;
+  console.log('hellooooooooo');
   this.fournisseurService.delete(this.fournisseur.id).subscribe(data=>{
+    console.log("sjsjjsjsj")
     this.getFournisseurs();
     this.fournisseurService.getTotal().subscribe((data:any)=>{  
       this.length=data;
@@ -114,7 +116,7 @@ confirmDelete(){
       this.getFournisseurs();
     })
     this.fournisseur = null;
-    this.messageService.add({severity: 'success', summary: 'Successful', detail: 'fournisseur supprimé', life: 3000});
+    this.messageService.add({severity: 'success', summary: 'Successful', detail: 'fournisseur supprime', life: 3000});
   }) 
 }
 

@@ -1,4 +1,4 @@
-export interface  fournisseur{
+export interface fournisseur{
     id?: string;
     lastName?:string,
     firstName?:string,

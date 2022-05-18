@@ -42,6 +42,7 @@ pageEvent: any;
         username: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
         password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
         birthDate: ['', Validators.required],
+        phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
 
       });
       
@@ -94,6 +95,7 @@ saveUser(){
     this.user.username=this.userForm.value.username
     this.user.password=this.userForm.value.password
     this.user.birthDate=this.userForm.value.birthDate
+    this.user.phoneNumber=this.userForm.value.phoneNumber
     this.userService.save(this.user).subscribe((data:any)=>{
       this.user={}
       this.getUsers();

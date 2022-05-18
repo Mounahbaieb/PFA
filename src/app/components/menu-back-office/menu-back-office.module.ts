@@ -106,6 +106,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppCodeModule } from '../app-code/app.code.component';
 import { AppMenuitemComponent } from './app.menuitem.component';
 import { ConfigService } from 'src/app/service/app.config.service';
+import { UserService } from 'src/app/service/user.service';
+import { FournisseurService } from 'src/app/service/fournisseur.service';
 
 @NgModule({
   declarations: [
@@ -217,7 +219,7 @@ import { ConfigService } from 'src/app/service/app.config.service';
         ]}
     ])
     ],providers:[
-      MenuService,ConfigService
+      MenuService,ConfigService,UserService,FournisseurService
     ]
 
 
