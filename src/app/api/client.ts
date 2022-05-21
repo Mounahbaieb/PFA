@@ -5,11 +5,11 @@ export interface Client{
     firstName?:string;
     gender?:Gender;
     birthDate?:string;
-    birthPlace?:string;
-    jobtitle?:string;
-    matrialStatus?:string;
+    birthplace?:string;
+    jobTitle?:string;
+    maritalStatus?:string;
     phoneNumber?:string;
-    landline?:string;
+    landLine?:string;
     email?:string;
     password?:string;
     // resident:string;

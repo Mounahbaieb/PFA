@@ -16,7 +16,6 @@ import { ButtonComponent } from './components/button/button.component';
 import { TableComponent } from './components/table/table.component';
 import { ListComponent } from './components/list/list.component';
 import { TreeComponent } from './components/tree/tree.component';
-import { CrudComponent } from './components/crud/crud.component';
 import { BlocksComponent } from './components/blocks/blocks.component';
 import { FloatLabelComponent } from './components/floatlabel/floatlabel.component';
 import { InvalidStateComponent } from './components/invalidstate/invalidstate.component';
@@ -31,6 +30,8 @@ import { LoginGuard } from './service/auth/login.guard';
 import { FournisseurListComponent } from './components/menu-back-office/fournisseurs/fournisseur-list/fournisseur-list.component';
 import { UserListComponent } from './components/menu-back-office/users/user-list/user-list.component';
 import { InfoComponent } from './components/info/info.component';
+import { ProduitListComponent } from './components/menu-back-office/produits/produit-list/produit-list.component';
+import { DemandesDeLeasingListComponent } from './components/menu-back-office/demandesDeLeasing/demandes-de-leasing-list/demandes-de-leasing-list.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -62,6 +63,8 @@ import { InfoComponent } from './components/info/info.component';
                    // {path: 'pages/crud', component: CrudComponent},
                     {path: 'pages/users', component: UserListComponent},
                     {path:'pages/fourisseurs',component:FournisseurListComponent},
+                    {path:'pages/produits',component:ProduitListComponent},
+                    {path:'pages/demandesDeLeasing',component:DemandesDeLeasingListComponent},
                     {path: 'pages/timeline', component: TimelineComponent},
                     {path: 'pages/empty', component: EmptyComponent},
                     {path: 'icons', component: IconsComponent},

@@ -1,5 +1,57 @@
-<p>recapitulation works!</p>
 <div class="flex flex-column align-items-center justify-content-center h-full py-5 px-3">
-    <i class="pi pi-fw pi-ticket mr-2 text-2xl"></i>
-    <p class="m-0 mt-5 text-center text-lg">Seat Component Content via Child Route</p>
+  <i class="pi pi-fw pi-check mr-2 text-2xl"></i>
+  <p class="m-0 mt-5 text-center text-lg">
+    
+ <h2 class="title text-center">
+  <span class="text-primary">Votre Données </span>
+    Personelles
+</h2>
+</div>
+<form  class=" row g-3" *ngIf="client">
+  <div class="col-md-6" >
+      <label for="name">{{client.lastName}}</label>
+      </div>
+  <div class="col-md-6">
+      <label for="name">{{client.firstName}}</label>
+      </div>
+      <div class="col-6">
+          <label for="name">{{client.email}}</label>
+      </div>
+        <div class="col-6">
+          <label class="form-label">{{client.gender}}</label>
+</div>   
+<div class="col-6">
+  <label for="name">{{client.birthDate}}</label>
+</div> 
+
+
+<div class="col-md-6">
+  <label for="name">{{client.birthPlace}}</label>
+</div>
+
+  <div class="col-md-6">
+      <label for="name">{{client.jobtitle}}</label>
+      </div>
+      <div class="col-md-6">
+          <label class="form-label">{{client.nationality}}</label>
+          </div>
+
+  
+   <div class="col-md-6">
+      <label class="form-label">{{client.matrialStatus}}</label>
   </div>
+  
+          <div class="col-md-6">
+              <label class="form-label">{{client.phoneNumber}}</label>
+          </div>
+  
+          <div class="col-md-6">
+                  <label for="name">{{client.landline}}</label>
+                  </div>   
+ 
+  <div class="col-md-6">
+      <br>
+  </div>
+</form>
+
+

@@ -28,6 +28,9 @@ export class ClientService {
     let data=localStorage.getItem('clients');
     this.client=JSON.parse(data);
    }
+   getClientById(id){
+     return this.http.get(CLIENT_API+"/"+id);
+   }
    findAll(pageNo:number,pageSize:number,sortBy:string){
     return this.http.get(CLIENT_API+"?pageNo="+pageNo+"&pageSize="+pageSize+"&sortBy="+sortBy);
   }

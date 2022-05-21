@@ -24,9 +24,9 @@ export class MenuBackOfficeComponent implements OnInit {
           items: [
               {label: 'Gestion des Agents', icon: 'pi pi-fw pi-users', routerLink: ['/pages/users']},
               {label: 'Gestion des fournisseurs', icon: 'pi pi-fw pi-users', routerLink: ['/pages/fourisseurs']},
-              {label:'Gestion des Produits',icon:'pi pi-fw pi-car',routerLink:['/']},
-               {label: 'Gestion des Clients', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/formlayout']},
-              {label: 'Les Demandes de Leasing', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input']},
+              {label:'Gestion des Produits',icon:'pi pi-fw pi-car',routerLink:['/pages/produits']},
+               //{label: 'Gestion des Clients', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/formlayout']},
+              {label: 'Les Demandes de Leasing', icon: 'pi pi-fw pi-check-square', routerLink: ['/pages/demandesDeLeasing']},
              // {label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel']},
              // {label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate']},
              // {label: 'Button', icon: 'pi pi-fw pi-mobile', routerLink: ['/uikit/button'], class: 'rotated-icon'},

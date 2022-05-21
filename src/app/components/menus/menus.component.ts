@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
 
 @Component({
@@ -6,6 +7,7 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
     encapsulation: ViewEncapsulation.None
 })
 export class MenusComponent implements OnInit {
+    
 
     breadcrumbItems: MenuItem[];
 
@@ -28,13 +30,12 @@ export class MenusComponent implements OnInit {
     plainMenuItems: MenuItem[];
 
     pageIndex: number = 0;
-
     ngOnInit() {
         this.routeItems = [
             {label: 'Simulateur de Financement', routerLink:'simulateur'},
-            {label: 'Remplir le formulaire', routerLink:'formulaire'},
-            {label: 'charger des documents', routerLink:'documents'},
-            {label: 'recapitulation', routerLink:'recapitulation'},
+            {label: 'Remplir le formulaire', routerLink:'formulaire/:ids'},
+            {label: 'charger des documents', routerLink:'documents/:ids/:idc'},
+            {label: 'recapitulation', routerLink:'recapitulation/:ids/:idc'},
             
         ];
     }

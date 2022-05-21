@@ -113,7 +113,6 @@ import { EmptyComponent } from './components/empty/empty.component';
 import { ChartsComponent } from './components/charts/charts.component';
 import { FileComponent } from './components/file/file.component';
 import { DocumentationComponent } from './components/documentation/documentation.component';
-import { CrudComponent } from './components/crud/crud.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { BlocksComponent } from './components/blocks/blocks.component';
@@ -270,7 +269,6 @@ import {MatSliderModule} from '@angular/material/slider';
         FileComponent,
         IconsComponent,
         DocumentationComponent,
-        CrudComponent,
         TimelineComponent,
         BlocksComponent,
         BlockViewer,

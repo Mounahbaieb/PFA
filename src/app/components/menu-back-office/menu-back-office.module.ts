@@ -17,7 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { PaginatorModule } from 'primeng/paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -108,6 +108,10 @@ import { AppMenuitemComponent } from './app.menuitem.component';
 import { ConfigService } from 'src/app/service/app.config.service';
 import { UserService } from 'src/app/service/user.service';
 import { FournisseurService } from 'src/app/service/fournisseur.service';
+import { ProduitListComponent } from './produits/produit-list/produit-list.component';
+import { DemandesDeLeasingListComponent } from './demandesDeLeasing/demandes-de-leasing-list/demandes-de-leasing-list.component';
+import { DemandesDeLeasingFormComponent } from './demandesDeLeasing/demandes-de-leasing-form/demandes-de-leasing-form.component';
+import { InvalidStateComponent } from '../invalidstate/invalidstate.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +121,11 @@ import { FournisseurService } from 'src/app/service/fournisseur.service';
     FournisseurFormComponent,
     FournisseurListComponent,
     UserFormComponent,
-    UserListComponent
+    UserListComponent,
+    ProduitListComponent,
+    DemandesDeLeasingListComponent,
+    DemandesDeLeasingFormComponent,
+
 
   ],
   imports: [
@@ -216,6 +224,9 @@ import { FournisseurService } from 'src/app/service/fournisseur.service';
         {path:'',component: MenuBackOfficeComponent, children:[
         {path:'', redirectTo: 'statistique', pathMatch: 'full'},
         {path: 'statistique', component: StatistiqueComponent},
+        {path:'pages/produits',component:ProduitListComponent},
+        {path:'pages/demandesDeLeasing',component:DemandesDeLeasingListComponent},
+        
         ]}
     ])
     ],providers:[

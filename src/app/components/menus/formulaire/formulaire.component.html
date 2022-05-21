@@ -47,7 +47,7 @@ le formulaire  <br> <span class="text-primary"> suivant pour </span> suivrez la 
  
 <div class="col-md-6">
     <label for="name">Lieu de Naissance</label>
-    <input type="text" pInputText id="name" [(ngModel)]="client.birthPlace" formControlName="birthPlace" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !clientForm.controls['birthPlace'].errors}"/>
+    <input type="text" pInputText id="name" [(ngModel)]="client.birthplace" formControlName="birthPlace" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !clientForm.controls['birthPlace'].errors}"/>
     <div *ngIf="clientForm.controls['birthPlace'].errors">
     <small class="error" *ngIf="submitted && clientForm.controls['birthPlace'].errors.required">*Le champs lieu de naissance est obligatoire.</small>
     <small class="error" *ngIf="submitted && clientForm.controls['birthPlace'].errors.minlength">*Le champs lieu de naissance doit contenir au moins 4 caractéres.</small>
@@ -56,7 +56,7 @@ le formulaire  <br> <span class="text-primary"> suivant pour </span> suivrez la 
 
     <div class="col-md-6">
         <label for="name">Titre d'emploi</label>
-        <input type="text" pInputText id="name" [(ngModel)]="client.jobtitle"  formControlName="jobTitle" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !clientForm.controls['jobTitle'].errors}"/>
+        <input type="text" pInputText id="name" [(ngModel)]="client.jobTitle"  formControlName="jobTitle" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !clientForm.controls['jobTitle'].errors}"/>
         <div *ngIf="clientForm.controls['jobTitle'].errors">
         <small class="error" *ngIf="submitted && clientForm.controls['jobTitle'].errors.required">*Le champs lieu de naissance est obligatoire.</small>
         <small class="error" *ngIf="submitted && clientForm.controls['jobTitle'].errors.minlength">*Le champs lieu de naissance doit contenir au moins 8 caractéres.</small>
@@ -92,7 +92,7 @@ le formulaire  <br> <span class="text-primary"> suivant pour </span> suivrez la 
     
             <div class="col-md-6">
                     <label for="name">Numéro de FIX ou Numéro de Téléphone N°2 </label>
-                    <input type="tel" pInputText id="phone" [(ngModel)]="client.landline" 
+                    <input type="tel" pInputText id="phone" [(ngModel)]="client.landLine" 
                     formControlName="landline" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !clientForm.controls['landline'].errors}"/>
                     <div *ngIf="clientForm.controls['landline'].errors">
                     <small class="error" *ngIf="submitted && clientForm.controls['landline'].errors.required">*Le champs Numéro de FIX est obligatoire.</small>

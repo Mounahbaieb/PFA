@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DemandeDeCredit } from '../api/demandeDeCredit';
 import { Product } from '../api/product';
 const SIMULATION_API = 'http://localhost:9000/api/simulations';
 
@@ -12,8 +13,8 @@ export class SimulationService {
   getAll(){
     return this.http.get(SIMULATION_API);
   }
-  save(vehicule:Product){
-    return this.http.post(SIMULATION_API,vehicule);
+  save(demande:DemandeDeCredit){
+    return this.http.post(SIMULATION_API,demande);
   }
 
 

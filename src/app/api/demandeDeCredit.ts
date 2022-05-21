@@ -1,6 +1,6 @@
 export interface DemandeDeCredit {
 
-id?: string;
+id?: number;
 duree?:string,
 nbrEcheance?:number;
 productId?:string;

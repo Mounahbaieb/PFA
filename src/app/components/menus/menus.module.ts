@@ -22,6 +22,10 @@ import { AuthentificationDialogComponent } from './authentification-dialog/authe
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { StepsModule } from 'primeng/steps';
+import { MessageService } from 'primeng/api';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -55,17 +59,23 @@ import { StepsModule } from 'primeng/steps';
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
+    MessageModule,
+    MessagesModule,
+    ToastModule,
+    
     RouterModule.forChild([
         {path:'',component: MenusComponent, children:[
 				// {path:'', redirectTo: 'personal', pathMatch: 'full'},
 				// {path: 'personal', component: PersonalComponent},
         // {path:'', redirectTo: 'simulateur', pathMatch: 'full'},
 				{path: 'simulateur', component: SimulationComponent},
-				{path: 'formulaire', component: FormulaireComponent},
-				{path: 'documents', component: DocumentsComponent},
-				{path: 'recapitulation', component: RecapitulationComponent},
+				{path: 'formulaire/:ids', component: FormulaireComponent},
+				{path: 'documents/:ids/:idc', component: DocumentsComponent},
+				{path: 'recapitulation/:ids/:idc', component: RecapitulationComponent},
         ]}
     ])
+  ],providers: [
+    MessageService
   ],
   exports: [RouterModule]
 })

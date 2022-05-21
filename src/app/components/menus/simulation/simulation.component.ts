@@ -69,9 +69,11 @@ export class SimulationComponent implements OnInit {
       {label: 'charger des documents', routerLink:'documents'},
       {label: 'recapitulation', routerLink:'recapitulation'},
       
+
   ];
     this.getAllProduct();
     this.demandeDeCredit={
+      id:null,
       productId:"",
       nbrEcheance:null,
       duree:"",
@@ -126,20 +128,22 @@ export class SimulationComponent implements OnInit {
         this.demandeDeCredit.nbrEcheance=this.valSlider;
         this.simulationService.save(this.demandeDeCredit).subscribe((data:any)=>{
           console.log("saving")  
+          this.demandeDeCredit=data;
           console.log(this.demandeDeCredit);
-          this.demandeDeCredit={}
 
+          console.log(this.demandeDeCredit.id);
 
+          this.router.navigate(['/menu-landing/formulaire/',this.demandeDeCredit.id]);
+
+        
         })
         
       
-      
-      
+
+
       }
       
       this.getAllProduct();
-
-      this.router.navigate(['/menu-landing/formulaire']);
 
 
 
