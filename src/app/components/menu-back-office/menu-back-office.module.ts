@@ -225,6 +225,7 @@ import { InvalidStateComponent } from '../invalidstate/invalidstate.component';
         {path:'', redirectTo: 'statistique', pathMatch: 'full'},
         {path: 'statistique', component: StatistiqueComponent},
         {path:'pages/produits',component:ProduitListComponent},
+        {path:'pages/fournisseurs',component:FournisseurListComponent},
         {path:'pages/demandesDeLeasing',component:DemandesDeLeasingListComponent},
         
         ]}

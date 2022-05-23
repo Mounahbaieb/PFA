@@ -19,6 +19,7 @@ export class UserListComponent implements OnInit {
   user: user;
   submitted: boolean;
   deleteUserDialog: boolean = false;
+  updateUserDialog:boolean=false;
 
  
 
@@ -45,6 +46,26 @@ pageEvent: any;
         phoneNumber: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
 
       });
+      
+
+    }
+    updateUser(){
+      this.submitted=true
+        this.updateUserDialog = false;
+        this.submitted=false;
+        this.user.firstName=this.userForm.value.firstName
+        this.user.lastName=this.userForm.value.lastName
+        this.user.email=this.userForm.value.email
+        this.user.username=this.userForm.value.username
+        this.user.password=this.userForm.value.password
+        this.user.birthDate=this.userForm.value.birthDate
+        this.user.phoneNumber=this.userForm.value.phoneNumber
+        this.userService.update(this.user.id,this.user).subscribe((data:any)=>{
+          this.getUsers();
+          this.userService.getTotal().subscribe((data:any)=>{  
+            this.length=data;
+          })
+        })
       
     }
 
@@ -127,5 +148,22 @@ confirmDelete(){
 
  
 }
+update(user: user){
+  console.log("hello");
+  this.updateUserDialog = true;
+  this.user = {...user};
+  console.log( this.user);
+  this.userForm.setValue({
+ firstName :this.user.firstName,
+  lastName:this.user.lastName,
+  email :this.user.email,
+  username: this.user.username,
+  password:this.user.password,
+  birthDate:this.user.birthDate,
+  phoneNumber:this.user.phoneNumber
+});
+}
+
+
 
 }

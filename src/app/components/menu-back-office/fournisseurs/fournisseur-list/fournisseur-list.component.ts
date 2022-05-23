@@ -16,6 +16,7 @@ export class FournisseurListComponent implements OnInit {
   fournisseur:fournisseur;
   submitted: boolean;
   deleteFournisseurDialog: boolean = false;
+  updateFournisseurDialog: boolean = false;
   displayedColumns: string[] = ['firstName','lastName', 'email', 'birthDate','phoneNumber','ville',"actions"];
   fournisseursDataSource:any;
   // MatPaginator Inputs
@@ -70,8 +71,6 @@ getFournisseurs(){
 openNew() {
   this.submitted = false;
   this.fournisseurDialog = true;
-  console.log("hello")
-
 }
 hideDialog() {
   this.fournisseurDialog = false;
@@ -119,5 +118,40 @@ confirmDelete(){
     this.messageService.add({severity: 'success', summary: 'Successful', detail: 'fournisseur supprime', life: 3000});
   }) 
 }
-
+update(fournisseur: fournisseur){
+  console.log("hello");
+  this.updateFournisseurDialog = true;
+  this.fournisseur = {...fournisseur};
+  console.log( this.fournisseur);
+  this.fournisseurForm.setValue({
+ firstName :this.fournisseur.firstName,
+  lastName:this.fournisseur.lastName,
+  email :this.fournisseur.email,
+  birthDate: this.fournisseur.birthDate,
+  phoneNumber:this.fournisseur.phoneNumber,
+  ville:this.fournisseur.ville,
+});
+}
+updateFournisseur(){
+    this.submitted=true
+    if(this.fournisseurForm.valid){
+      this.updateFournisseurDialog= false;
+      this.submitted=false;
+      this.fournisseur.firstName=this.fournisseurForm.value.firstName
+      this.fournisseur.lastName=this.fournisseurForm.value.lastName
+      this.fournisseur.email=this.fournisseurForm.value.email
+      this.fournisseur.birthDate=this.fournisseurForm.value.birthDate
+      this.fournisseur.ville=this.fournisseurForm.value.ville
+      this.fournisseur.phoneNumber=this.fournisseurForm.value.phoneNumber
+      console.log(this.fournisseur.phoneNumber);
+      this.fournisseurService.update(this.fournisseur.id,this.fournisseur).subscribe((data:any)=>{
+        console.log(this.fournisseur);
+        this.getFournisseurs();
+        this.fournisseurService.getTotal().subscribe((data:any)=>{  
+          this.length=data;
+        })
+      })
+    }
+  
+}
 }

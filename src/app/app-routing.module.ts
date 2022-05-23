@@ -32,6 +32,7 @@ import { UserListComponent } from './components/menu-back-office/users/user-list
 import { InfoComponent } from './components/info/info.component';
 import { ProduitListComponent } from './components/menu-back-office/produits/produit-list/produit-list.component';
 import { DemandesDeLeasingListComponent } from './components/menu-back-office/demandesDeLeasing/demandes-de-leasing-list/demandes-de-leasing-list.component';
+import { FournisseurFormComponent } from './components/menu-back-office/fournisseurs/fournisseur-form/fournisseur-form.component';
 @NgModule({
     imports: [
         RouterModule.forRoot([
@@ -62,7 +63,7 @@ import { DemandesDeLeasingListComponent } from './components/menu-back-office/de
                     {path: 'uikit/file', component: FileComponent},
                    // {path: 'pages/crud', component: CrudComponent},
                     {path: 'pages/users', component: UserListComponent},
-                    {path:'pages/fourisseurs',component:FournisseurListComponent},
+                    {path:'pages/fournisseurs',component:FournisseurListComponent},
                     {path:'pages/produits',component:ProduitListComponent},
                     {path:'pages/demandesDeLeasing',component:DemandesDeLeasingListComponent},
                     {path: 'pages/timeline', component: TimelineComponent},

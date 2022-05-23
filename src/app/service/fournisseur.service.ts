@@ -22,4 +22,7 @@ export class FournisseurService {
   delete(id){
     return this.http.delete(FOURNISSEUR_API+"/"+id)
   }
+  update(id,fournisseur:fournisseur){
+    return this.http.put(FOURNISSEUR_API+"/"+id,fournisseur)
+  }
 }

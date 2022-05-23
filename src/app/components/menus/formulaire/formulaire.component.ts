@@ -4,6 +4,7 @@ import { MessageService, SelectItem } from 'primeng/api';
 import { Client } from 'src/app/api/client';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ClientService } from 'src/app/service/client.service';
+import { ActivatedRoute, Router } from '@angular/router';
 export interface AuthentificationData {
   username: string;
   password: string;
@@ -38,7 +39,7 @@ length = 100;
 pageSize=10;
 pageSizeOptions: number[] = [5, 10, 25, 100];
 sortBy=""
-  constructor(private fb:FormBuilder,private clientService:ClientService ,private messageService: MessageService,public dialog: MatDialog) {
+  constructor(private router:Router,private activatedRoute:ActivatedRoute,private fb:FormBuilder,private clientService:ClientService ,private messageService: MessageService,public dialog: MatDialog) {
 
     this.clientForm = this.fb.group({
 
@@ -345,6 +346,8 @@ sortBy=""
        if(this.authentificationForm.value.password==this.c.password){
          console.log("wleyyyeww logged In");
          this.authentificationDialog=false;
+         this.router.navigate(['/menu-landing/documents/',this.activatedRoute.snapshot.params.ids,this.c.id]);
+
          
        }
        else{
@@ -387,19 +390,23 @@ sortBy=""
      this.client.nationality=this.clientForm.value.nationalite.name,
       this.client.phoneNumber=this.clientForm.value.phoneNumber,
       this.clientService.save(this.client).subscribe((data:any)=>{
+        this.client=data;
         console.log('client',this.client);
-        this.client={}
         this.getCLients();
         this.clientService.getTotal().subscribe((data:any)=>{  
           this.length=data;
           console.log(this.length);
 
         })
+        this.authentificationDialog = false;
+        console.log(this.client.id);
+        this.router.navigate(['/menu-landing/documents/',this.activatedRoute.snapshot.params.ids,this.client.id]);
+        this.client={}
+
       })
 
     }
 
-    this.authentificationDialog = false;
   
   }
 
