@@ -15,7 +15,7 @@
         <p-toolbar styleClass="mb-4">
             <ng-template pTemplate="left">
                 <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-                    <h5 class="m-0">Liste des Vehicule</h5>
+                    <h5 class="m-0">Liste des Véhicules</h5>
                 </div>
             </ng-template>
 
@@ -71,7 +71,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions  </th>
                 <td mat-cell *matCellDef="let element">  
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" ></button>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" (click)="update(element)"  ></button>
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteProduit(element)" ></button>  
                 </td>
               </ng-container>
@@ -164,6 +164,69 @@
     
   
 </p-dialog>
+<p-dialog [(visible)]="updateProduitDialog" [style]="{width: '450px'}" header="Modifier Fournisseur " [modal]="true" class="p-fluid">
+    <form *ngIf="produit"[formGroup]="produitForm">
+            
+        <div class="formgrid grid">
+            <div class="field col">
+                <label for="name">Nom</label>
+                <input type="text" pInputText id="name" formControlName="name" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && produitForm.controls['name'].errors}"/>
+                <div *ngIf="produitForm.controls['name'].errors">
+                    <small class="error" *ngIf="submitted && produitForm.controls['name'].errors.required">*Le champs Nom est obligatoire.</small>
+                    <small class="error" *ngIf="submitted && produitForm.controls['name'].errors.minlength">*Le champs Nom doit contenir au moins 3 caractéres.</small>    
+                </div>
+            </div>
+            <div class="field col">
+                <label for="name">Prix</label>
+                <input type="text" pInputText id="name" formControlName="prix" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !produitForm.controls['prix'].errors}"/>
+                <div *ngIf="produitForm.controls['prix'].errors">
+                <small class="error" *ngIf="submitted && produitForm.controls['prix'].errors.required">*Le champs Prix est obligatoire.</small>
+                <small class="error" *ngIf="submitted && produitForm.controls['prix'].errors.minlength">*Le champs Prix doit contenir au moins 3 caractéres.</small>
+                </div>    
+            </div>
+        </div>
+         <div class="field">
+            <label for="name">Modéle</label>
+            <input type="text" pInputText id="name" formControlName="modele" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !produitForm.controls['modele'].errors}"/>
+            <div *ngIf="produitForm.controls['modele'].errors">
+            <small class="error" *ngIf="submitted && produitForm.controls['modele'].errors.required">*Le champs Modéle de naissance est obligatoire.</small>
+            </div>
+        </div>
+        <div class="field">
+            <label for="name">Nombre de Place</label>
+            <input type="text" pInputText id="name" formControlName="nbrPlace" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !produitForm.controls['nbrPlace'].errors}"/>
+            <div *ngIf="produitForm.controls['nbrPlace'].errors">
+            <small class="error" *ngIf="submitted && produitForm.controls['nbrPlace'].errors.required">*Le champs Nombre de Place est obligatoire.</small>
+        </div>    
+        </div> 
+        <div class="formgrid grid">
+             <div class="field col">
+                <label for="name">Energie</label>
+                <input type="text" pInputText id="name" formControlName="energie" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !produitForm.controls['energie'].errors}"/>
+                <div *ngIf="produitForm.controls['energie'].errors">
+                <small class="error" *ngIf="submitted && produitForm.controls['energie'].errors.required">*Le champs du numéro de energie est obligatoire.</small>
+                <small class="error" *ngIf="submitted && produitForm.controls['energie'].errors.minlength">*Le champs du numéro de energie doit contenir au moins 3 caractéres.</small>
+                </div>
+            </div>  
+                       <div class="field col">
+                <label for="name">Description</label>
+                <input type="text" pInputText id="name" formControlName="description" required autofocus [ngClass]="{'ng-invalid ng-dirty' : submitted && !produitForm.controls['description'].errors}"/>
+                <div *ngIf="produitForm.controls['description'].errors">
+                <small class="error" *ngIf="submitted && produitForm.controls['description'].errors.required">Le champs description est obligatoire.</small>
+                </div>
+            </div> 
+        </div> 
+
+    
+            
+            <div>
+                <button pButton pRipple label="Modifier" icon="pi pi-check" class="p-button" (click)="updateProduit()"></button>
+            </div>
+        </form> 
+        
+  
+</p-dialog>
+
 <p-dialog [(visible)]="deleteProduitDialog" header="Confirmer" [modal]="true" [style]="{width:'450px'}">
   
     <div class="flex align-items-center justify-content-center">
@@ -175,6 +238,24 @@
         <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Oui" (click)="confirmDelete()"></button>
     </div>
 </p-dialog> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="layout-sidebar">        
     <app-menu-back-office>
 

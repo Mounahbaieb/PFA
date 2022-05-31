@@ -20,7 +20,7 @@ import { AppMainComponent } from './app.main.component';
     </div> 
     <h4> Leasing</h4>  
     <p>
-    le leasing est un  cpntrat de location de voitures entre un loueur spécialisé et un particulier
+    le leasing est un  contrat de location de voitures entre un loueur spécialisé et un particulier
     ou un professionnel ...        
  <button pButton pRipple type="button" label="Voici quelques ...." class="p-button-info p-button-text mr-2 mb-2"  [routerLink]="['/menu-landing/info']"></button>
     </p>
@@ -47,7 +47,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Home',
                 items:[
-                    {label: 'Dashboar',icon: 'pi pi-fw pi-home', routerLink: ['/menu-landing']}
+                    {label: 'Accueil',icon: 'pi pi-fw pi-home', routerLink: ['/menu-landing']}
                 ]
             },
             {

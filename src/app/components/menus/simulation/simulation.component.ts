@@ -7,6 +7,7 @@ import {Product} from 'src/app/api/product';
 import { SimulationService } from 'src/app/service/simulation.service';
 import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 import { DemandeDeCredit } from 'src/app/api/demandeDeCredit';
+
 @Component({
   selector: 'app-simulation',
   templateUrl: './simulation.component.html',
@@ -20,6 +21,7 @@ export class SimulationComponent implements OnInit {
   simulationForm: FormGroup;
   submitted: boolean;
   demandeCreditsDataSource:any;
+  GetAllVehiculeDialog:boolean=false;
 
   min:any;
   max:any;
@@ -33,6 +35,8 @@ export class SimulationComponent implements OnInit {
   breadcrumbItems: MenuItem[];
 
   tieredItems: MenuItem[];
+
+  selectedDropC:any;
 
   items: MenuItem[];
 
@@ -51,6 +55,18 @@ export class SimulationComponent implements OnInit {
 
   pageIndex: number = 0;
 
+  produitsDataSource:any;
+  pageEvent: any;
+
+
+  // MatPaginator Inputs
+  displayedColumns: string[] = ['name','prix', 'modele', 'nbrPlace','energie','description','actions'];
+
+pageNo=0;
+length = 100;
+pageSize=10;
+pageSizeOptions: number[] = [5, 10, 25, 100];
+sortBy=""
   constructor(private router:Router,private fb:FormBuilder,private produitService:ProduitService,private simulationService:SimulationService) {
   this.simulationForm = this.fb.group({
     vehicule: ['', Validators.required],
@@ -89,6 +105,7 @@ export class SimulationComponent implements OnInit {
     }
     
   }
+  
 
   suivant(){
     this.submitted=true
@@ -148,11 +165,45 @@ export class SimulationComponent implements OnInit {
 
 
 }
+getAllVehicule(){
+  this.getProduits();
+  this.GetAllVehiculeDialog = true;
+
+}
 getDemandeDeCredits(){
   this.simulationService.getAll().subscribe(data=>{
     this.demandeCreditsDataSource=data;
   })
         
+}
+getProduits(){
+  this.produitService.findAll(this.pageNo,this.pageSize,this.sortBy)
+  .subscribe(data=>{
+    this.produitsDataSource=data
+    console.log(this.produitsDataSource);
+   })
+   
+}
+customSort(event:any){
+  this.sortBy=event.active;
+  this.getProduits();
+}
+pageChanged(event:any){
+  this.pageNo=event.pageIndex
+  this.pageSize=event.pageSize
+  this.getProduits();
+  this.pageEvent=event;
+}
+validerVehicule(produit: Product){
+  console.log('hello')
+  this.GetAllVehiculeDialog = false;
+  //this.vehicules=produit;
+  // this.selectedDrop=this.vehicules;
+  // console.log(this.selectedDrop)
+  //this.vehicules=produit.name;
+  console.log(produit)
+  this.selectedDropC=produit
+  this.selectedDrop=this.selectedDropC;
 }
 
 }  

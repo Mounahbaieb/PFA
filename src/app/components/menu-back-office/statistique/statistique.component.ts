@@ -9,6 +9,8 @@ import { ConfigService } from 'src/app/service/app.config.service';
   styleUrls: ['./statistique.component.scss']
 })
 export class StatistiqueComponent implements OnInit {
+    dialogbienvenue:boolean=true;
+
   lineData: any;
 
     barData: any;
@@ -44,7 +46,7 @@ export class StatistiqueComponent implements OnInit {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
           {
-              label: 'First Dataset',
+              label: 'Voitures neuves semi-automatique',
               data: [65, 59, 80, 81, 56, 55, 40],
               fill: false,
               backgroundColor: '#2f4860',
@@ -52,7 +54,7 @@ export class StatistiqueComponent implements OnInit {
               tension: .4
           },
           {
-              label: 'Second Dataset',
+              label: 'Voitures neuves automatique',
               data: [28, 48, 40, 19, 86, 27, 90],
               fill: false,
               backgroundColor: '#00bb7e',
@@ -66,12 +68,12 @@ export class StatistiqueComponent implements OnInit {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
           {
-              label: 'My First dataset',
+              label: 'Voitures neuves semi-automatique',
               backgroundColor: '#2f4860',
               data: [65, 59, 80, 81, 56, 55, 40]
           },
           {
-              label: 'My Second dataset',
+              label: 'Voitures neuves automatique',
               backgroundColor: '#00bb7e',
               data: [28, 48, 40, 19, 86, 27, 90]
           }
@@ -116,11 +118,11 @@ export class StatistiqueComponent implements OnInit {
           label: 'My dataset'
       }],
       labels: [
-          "Red",
-          "Green",
-          "Yellow",
-          "Grey",
-          "Blue"
+          "demande de Simulation",
+          "Creation des comptes Client",
+          "Valider la demande de Simulation",
+          "Refuser la demande de Simulation",
+          "Consulter les voitures neuves"
       ]
   };
 

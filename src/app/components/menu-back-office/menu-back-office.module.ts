@@ -112,6 +112,7 @@ import { ProduitListComponent } from './produits/produit-list/produit-list.compo
 import { DemandesDeLeasingListComponent } from './demandesDeLeasing/demandes-de-leasing-list/demandes-de-leasing-list.component';
 import { DemandesDeLeasingFormComponent } from './demandesDeLeasing/demandes-de-leasing-form/demandes-de-leasing-form.component';
 import { InvalidStateComponent } from '../invalidstate/invalidstate.component';
+import { AppMainComponent } from 'src/app/app.main.component';
 
 @NgModule({
   declarations: [

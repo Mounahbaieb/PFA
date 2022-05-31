@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
   config: AppConfig;
   subscription: Subscription;
   form:FormGroup;
+  dialogerror:boolean=false;
   error=false;
   public routers: typeof routes = routes;
   constructor(public configService: ConfigService,private fb:FormBuilder, 
@@ -72,10 +73,12 @@ export class LoginComponent implements OnInit {
                         
                         console.log("User is logged in"+jwtToken);
                         this.router.navigate([this.routers.DASHBOARD]).then();
+
                       },
                     err => {
                       console.log("error")
                       this.error = true;
+                      this.dialogerror=true;
                     }
                 );
         }

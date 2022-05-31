@@ -26,6 +26,11 @@ import { MessageService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,10 @@ import { ToastModule } from 'primeng/toast';
     FormsModule,
     ReactiveFormsModule,
     DropdownModule,
+  
     MatDialogModule,
+    MatStepperModule,MatFormFieldModule, MatInputModule,MatTableModule,MatPaginatorModule,MatSortModule,
+
     ConfirmDialogModule,
     DialogModule,
     MatButtonModule,
@@ -62,6 +70,7 @@ import { ToastModule } from 'primeng/toast';
     MessageModule,
     MessagesModule,
     ToastModule,
+    ToolbarModule,
     
     RouterModule.forChild([
         {path:'',component: MenusComponent, children:[

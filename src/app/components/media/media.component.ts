@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../service/productservice';
 import { PhotoService } from '../../service/photoservice';
 import { Product } from '../../api/product';
+import { ProduitService } from 'src/app/service/produit.service';
 
 @Component({
   selector: 'app-media',
@@ -16,7 +17,7 @@ import { Product } from '../../api/product';
 export class MediaComponent implements OnInit {
 
   products: Product[];
-
+    produit:any;
   images: any[];
 
   galleriaResponsiveOptions: any[] = [
@@ -56,15 +57,21 @@ export class MediaComponent implements OnInit {
       }
   ];
 
-  constructor(private productService: ProductService, private photoService: PhotoService) {}
+  constructor(private productService: ProductService,private produitsService:ProduitService, private photoService: PhotoService) {}
 
   ngOnInit() {
-      this.productService.getProductsSmall().then(products => {
-          this.products = products;
-      });
+    //   this.productService.getProductsSmall().then(products => {
+    //       this.products = products;
+    //   });
+      this.produitsService.getAll().subscribe(data=>{
+          this.produit=data;
+          this.products=this.produit;
+      })
 
       this.photoService.getImages().then(images => {
           this.images = images;
       });
+
   }
+
 }

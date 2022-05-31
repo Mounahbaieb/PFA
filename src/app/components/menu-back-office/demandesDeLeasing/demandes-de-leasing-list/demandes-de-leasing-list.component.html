@@ -96,26 +96,27 @@
 
 
 </div>
-<p-dialog [(visible)]="deleteDemandeDialog" header="Confirmer" [modal]="true" [style]="{width:'450px'}">
+<p-dialog [(visible)]="deleteDemandeDialog" header="Confirmation" [modal]="true" [style]="{width:'450px'}">
   
     <div class="flex align-items-center justify-content-center">
         <i class="pi pi-exclamation-triangle mr-3 error" style="font-size: 2rem"></i>
-        <span *ngIf="demande">êtes-vous sûr de vouloir supprimer  La demande de <b>{{demande.name}}</b>?</span>
+        <span *ngIf="demande">Etes-vous sûr de vouloir supprimer  La demande de <b>{{demande.name}}</b>?</span>
     </div>
     <div class="flex flex-end" style="align-items: flex-end">
         <button pButton pRipple icon="pi pi-times" class="p-button-text" label="Non" (click)="deleteDemandeDialog = false"></button>
         <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Oui" (click)="confirmDelete()"></button>
     </div>
 </p-dialog> 
-<p-dialog [(visible)]="validerDemandeDialog" header="Confirmer" [modal]="true" [style]="{width:'450px'}">
+<p-dialog [(visible)]="validerDemandeDialog" header="Confirmation" [modal]="true" [style]="{width:'450px'}">
   
     <div class="flex align-items-center justify-content-center">
         <i class="pi pi-check mr-3 " style="font-size: 2rem"></i>
-        <span *ngIf="demande">Vous êtes accepter la demande de cette Client   </span>
+        <span *ngIf="demande">Etes-vous sûr de vouloir Valider  La demande de <b>{{demande.name}}</b>? </span>
     </div>
     <div class="flex flex-end" style="align-items: flex-end">
-        <button pButton pRipple icon="pi pi-times" class="p-button-text" label="Okay" (click)="validerDemandeDialog = false"></button>
-    </div>
+      <button pButton pRipple icon="pi pi-times" class="p-button-text" label="Non" (click)="validerDemandeDialog = false"></button>
+      <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Oui" (click)="confirm(demande)"></button>
+  </div>
 </p-dialog> 
 <div class="layout-sidebar">        
     <app-menu-back-office>

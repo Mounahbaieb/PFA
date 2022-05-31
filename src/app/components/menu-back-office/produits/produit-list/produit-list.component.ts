@@ -25,7 +25,7 @@ length = 100;
 pageSize=10;
 pageSizeOptions: number[] = [5, 10, 25, 100];
 sortBy=""
-
+updateProduitDialog: boolean = false;
 // MatPaginator Output
 pageEvent: any;
   constructor(private fb:FormBuilder,
@@ -77,6 +77,15 @@ getProduits(){
    
 }
 openNew() {
+  this.produitForm.setValue({
+    name:'',
+    prix:'',
+    modele:'',
+   nbrPlace:'',
+    energie:'',
+    description:''
+
+});
   this.submitted = false;
   this.produitDialog = true;
   console.log("hello")
@@ -110,6 +119,44 @@ saveProduit(){
       })
     })
   }
+}
+update(produit: Product){
+  console.log("hello");
+  this.updateProduitDialog = true;
+  this.produit = {...produit};
+  console.log( this.produit);
+  this.produitForm.setValue({
+    name:this.produit.name,
+    prix:this.produit.prix,
+    modele:this.produit.modele,
+   nbrPlace:this.produit.nbrPlace,
+    energie:this.produit.energie,
+    description:this.produit.description
+
+});
+}
+updateProduit(){
+  this.submitted=true
+  if(this.produitForm.valid){
+    this.updateProduitDialog= false;
+    this.submitted=false;
+    this.produit.name=this.produitForm.value.name
+    this.produit.prix=this.produitForm.value.prix
+    this.produit.modele=this.produitForm.value.modele
+    this.produit.nbrPlace=this.produitForm.value.nbrPlace
+    this.produit.energie=this.produitForm.value.energie
+    this.produit.description=this.produitForm.value.description
+
+    console.log(this.produit.prix);
+    this.produitService.update(this.produit.id,this.produit).subscribe((data:any)=>{
+      console.log(this.produit);
+      this.getProduits();
+      this.produitService.getTotal().subscribe((data:any)=>{  
+        this.length=data;
+      })
+    })
+  }
+
 }
 deleteProduit(produit: Product) {
    this.deleteProduitDialog = true;

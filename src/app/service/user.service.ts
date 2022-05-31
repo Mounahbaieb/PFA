@@ -13,6 +13,9 @@ export class UserService {
   findAll(pageNo:number,pageSize:number,sortBy:string){
     return this.http.get(USER_API+"?pageNo="+pageNo+"&pageSize="+pageSize+"&sortBy="+sortBy);
   }
+  getByid(id){
+    return this.http.get(USER_API+'/'+id);
+  }
   save(user:user){
     return this.http.post(USER_API,user);
   }

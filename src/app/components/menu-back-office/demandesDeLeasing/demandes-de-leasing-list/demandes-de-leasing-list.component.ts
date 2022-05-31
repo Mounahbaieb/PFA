@@ -78,6 +78,11 @@ confirmDelete(){
     this.messageService.add({severity: 'success', summary: 'Successful', detail: 'fournisseur supprime', life: 3000});
   }) 
 }
+confirm(demande :DemandeDeCredit){
+  this.validerDemandeDialog = false;
+  this.demande={...demande}
+
+}
 valider(demande :DemandeDeCredit){
   this.validerDemandeDialog=true;
   this.demande={...demande}

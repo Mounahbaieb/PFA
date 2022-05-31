@@ -69,7 +69,14 @@ getFournisseurs(){
 }
 
 openNew() {
-  this.submitted = false;
+  this.fournisseurForm.setValue({
+    firstName :'',
+     lastName:'',
+     email :'',
+     birthDate: '',
+     phoneNumber:'',
+     ville:'',
+   });  this.submitted = false;
   this.fournisseurDialog = true;
 }
 hideDialog() {
@@ -146,11 +153,13 @@ updateFournisseur(){
       console.log(this.fournisseur.phoneNumber);
       this.fournisseurService.update(this.fournisseur.id,this.fournisseur).subscribe((data:any)=>{
         console.log(this.fournisseur);
+        this.fournisseur={}
         this.getFournisseurs();
         this.fournisseurService.getTotal().subscribe((data:any)=>{  
           this.length=data;
         })
       })
+
     }
   
 }
