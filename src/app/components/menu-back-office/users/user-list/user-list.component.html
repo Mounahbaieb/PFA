@@ -100,7 +100,7 @@
 
 </div>
 
-<p-dialog [(visible)]="userDialog" [style]="{width: '450px'}" header="User Details" [modal]="true" class="p-fluid">
+<p-dialog [(visible)]="userDialog" [style]="{width: '450px'}" header="Détails de l'utilisateur" [modal]="true" class="p-fluid">
     <form [formGroup]="userForm">
         
         
@@ -169,7 +169,7 @@
 
         
         <div>
-            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button" (click)="saveUser()"></button>
+            <button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button" (click)="saveUser()"></button>
         </div>
     </form>
     
@@ -187,7 +187,7 @@
         <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Oui" (click)="confirmDelete()"></button>
     </div>
 </p-dialog>
-<p-dialog [(visible)]="updateUserDialog" [style]="{width: '450px'}" header="User Details" [modal]="true" class="p-fluid">
+<p-dialog [(visible)]="updateUserDialog" [style]="{width: '450px'}" header="Modifier un utilisateur" [modal]="true" class="p-fluid">
     <form *ngIf="user"[formGroup]="userForm">
         
         

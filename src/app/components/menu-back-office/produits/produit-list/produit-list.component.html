@@ -102,7 +102,7 @@
 
 </div>
 
-<p-dialog [(visible)]="produitDialog" [style]="{width: '450px'}" header="Produit Details" [modal]="true" class="p-fluid">
+<p-dialog [(visible)]="produitDialog" [style]="{width: '450px'}" header="Details d'un véhicule" [modal]="true" class="p-fluid">
     <form [formGroup]="produitForm">
         
         
@@ -164,7 +164,7 @@
     
   
 </p-dialog>
-<p-dialog [(visible)]="updateProduitDialog" [style]="{width: '450px'}" header="Modifier Fournisseur " [modal]="true" class="p-fluid">
+<p-dialog [(visible)]="updateProduitDialog" [style]="{width: '450px'}" header="Modifier véhicule " [modal]="true" class="p-fluid">
     <form *ngIf="produit"[formGroup]="produitForm">
             
         <div class="formgrid grid">

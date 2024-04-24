@@ -32,7 +32,7 @@ pageEvent: any;
     private messageService: MessageService,private produitService:ProduitService) {       
       this.produitForm = this.fb.group({
       name: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-      description: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+      description: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       prix: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       modele: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       nbrPlace: ['', Validators.required],
@@ -83,8 +83,7 @@ openNew() {
     modele:'',
    nbrPlace:'',
     energie:'',
-    description:''
-
+    description:'',
 });
   this.submitted = false;
   this.produitDialog = true;

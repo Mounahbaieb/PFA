@@ -102,7 +102,7 @@ le formulaire  <br> <span class="text-primary"> suivant pour </span> suivrez la 
    
     <div class="col-md-6">
         <br>
-        <button pButton pRipple type="button" label="Suivant" class="p-button-info p-button-text mr-2 mb-2"(click)="openDialog()"></button>
+        <button pButton pRipple type="button" label="Suivant" class="p-button-info p-button-text mr-2 mb-2"(click)="inscriptionDialog()"></button>
     </div>
   </form>
 
@@ -130,8 +130,6 @@ le formulaire  <br> <span class="text-primary"> suivant pour </span> suivrez la 
            
         </div>
     </form>
-    
-  
 </p-dialog>
 <p-dialog [(visible)]="inscrptionDialog" [style]="{width: '450px'}" header="Inscription" [modal]="true" class="p-fluid">
     <form [formGroup]="authentificationForm">

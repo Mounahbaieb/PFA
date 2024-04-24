@@ -328,8 +328,6 @@ sortBy=""
       //   }
       //   this.authentificationDialog = true;
       //  
-        
-  
   }
   authentifier(){
     console.log('hello authentification')
@@ -360,15 +358,21 @@ sortBy=""
 
 
   }
-  // isLoggedIn(){
-  //   this.clientService.getClientByEmail(this.client.email).subscribe(data=>{
-  //     this.c=data;
-  //     console.log(this.c);
-  //   })
-  //  }
+  isLoggedIn(){
+    this.clientService.getClientByEmail(this.client.email).subscribe(data=>{
+      this.c=data;
+      console.log(this.c);
+    })
+   }
   inscriptionDialog(){
-    this.inscrptionDialog = true;
-    this.authentificationDialog=false;
+    console.log('aloo')
+    this.submitted = true;
+    if(this.clientForm.valid){
+      console.log('hdhdhdhhddh')
+      this.inscrptionDialog = true;
+      this.email=this.clientForm.value.email;
+      console.log(this.client.email);
+    }
   }
   inscription(){  
     this.submitted=true
