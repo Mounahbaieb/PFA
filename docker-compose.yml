@@ -6,6 +6,8 @@ services:
     container_name: angular
     ports:
       - "8085:80"
+    environment:
+      MYSQL_HOST: mysqlcontainer
 
   backend:
     image: imge
@@ -19,9 +21,21 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
 
-  
+  mysql:
+    image: mysql:5.7
+    container_name: mysqlcontainer
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: leasingdbCopie
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
 
 networks:
   default:
     external:
-      name: networkmysql  # Use the existing network
+      name: networkmysql
