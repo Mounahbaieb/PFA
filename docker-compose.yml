@@ -1,16 +1,14 @@
 version: '3.8'
-
 services:
   frontend:
-    image: angulardoc
+    image: FrontApp
     container_name: angular
     ports:
       - "8085:80"
     environment:
       MYSQL_HOST: mysqlcontainer
-
   backend:
-    image: imge
+    image: SpringApp
     container_name: backend
     ports:
       - "9001:8080"
@@ -20,7 +18,6 @@ services:
       MYSQL_DB_NAME: leasingdbCopie
       MYSQL_USER: root
       MYSQL_PASSWORD: root
-
   mysql:
     image: mysql:5.7
     container_name: mysqlcontainer
@@ -29,12 +26,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: leasingdbCopie
-    volumes:
-      - mysql_data:/var/lib/mysql
-
 volumes:
   mysql_data:
-
 networks:
   default:
     external:
