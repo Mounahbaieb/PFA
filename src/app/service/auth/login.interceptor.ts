@@ -13,7 +13,7 @@ export class LoginInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (request.url !== 'http://localhost:9001/login') {
+    if (request.url !== 'http://174.129.128.123:9001/login') {
     
       const token = localStorage.getItem('token');
       request = request.clone({
