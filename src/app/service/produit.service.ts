@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../api/product';
-const PRODUIT_API = 'http://174.129.128.123:9001/products';
+const PRODUIT_API = 'http://174.129.128.123:9001/api/products';
 
 @Injectable({
   providedIn: 'root'
