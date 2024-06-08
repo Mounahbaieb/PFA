@@ -1,14 +1,14 @@
 version: '3.8'
 services:
   frontend:
-    image: FrontApp
+    image: mounahbaieb/frontapp:latest
     container_name: angular
     ports:
       - "8085:80"
     environment:
       MYSQL_HOST: mysqlcontainer
   backend:
-    image: SpringApp
+    image: mounahbaieb/springapp:latest
     container_name: backend
     ports:
       - "9001:8080"
