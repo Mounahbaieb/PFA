@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DemandeDeCredit } from '../api/demandeDeCredit';
 import { Product } from '../api/product';
-const SIMULATION_API = 'http://174.129.128.123:9001/simulations';
+const SIMULATION_API = 'http://174.129.128.123:9001/api/simulations';
 
 @Injectable({
   providedIn: 'root'
