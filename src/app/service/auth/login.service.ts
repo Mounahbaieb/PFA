@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
-const AUTH_API = 'http://174.129.128.123:9001/';
+const AUTH_API = 'http://174.129.128.123:9001/api/';
 
 
 @Injectable({
