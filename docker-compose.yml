@@ -26,8 +26,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: leasingdbCopie
-volumes:
-  mysql_data:
 networks:
   default:
     external:
