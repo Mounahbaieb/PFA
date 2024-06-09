@@ -2,25 +2,25 @@ version: '3.8'
 services:
   frontend:
     image: mounahbaieb/angularapp:latest
-    container_name: angular
+    container_name: angular2
     ports:
       - "8085:80"
     environment:
-      MYSQL_HOST: mysqlcontainer
+      MYSQL_HOST: mysqlcontainer2
   backend:
     image: mounahbaieb/backapp:latest
-    container_name: backend
+    container_name: backend2
     ports:
       - "9001:8080"
     environment:
-      MYSQL_HOST: mysqlcontainer
+      MYSQL_HOST: mysqlcontainer2
       MYSQL_PORT: 3306
       MYSQL_DB_NAME: leasingdbCopie
       MYSQL_USER: root
       MYSQL_PASSWORD: root
   mysql:
     image: mysql:5.7
-    container_name: mysqlcontainer
+    container_name: mysqlcontainer2
     ports:
       - "3306:3306"
     environment:
